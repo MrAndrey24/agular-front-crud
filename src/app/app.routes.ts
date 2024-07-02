@@ -11,6 +11,7 @@ import { GuestGuard } from './guards/guest.guard';
 import { IRoleType } from './interfaces';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { GamesComponent } from './pages/games/games.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
 
 export const routes: Routes = [
   {
@@ -48,8 +49,7 @@ export const routes: Routes = [
         canActivate:[AdminRoleGuard],
         data: { 
           authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin
+            IRoleType.superAdminRole
           ],
           showInSidebar: true,
           name: 'Users'
@@ -60,8 +60,7 @@ export const routes: Routes = [
         component: DashboardComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
+            IRoleType.superAdminRole,
             IRoleType.user
           ],
           showInSidebar: true,
@@ -73,8 +72,7 @@ export const routes: Routes = [
         component: ProfileComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
+            IRoleType.superAdminRole,
             IRoleType.user
           ],
           showInSidebar: false,
@@ -86,12 +84,23 @@ export const routes: Routes = [
         component: GamesComponent,
         data: { 
           authorities: [
-            IRoleType.admin, 
-            IRoleType.superAdmin,
+            IRoleType.superAdminRole,
             IRoleType.user
           ],
           showInSidebar: true,
           name: 'games'
+        }
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        data: { 
+          authorities: [
+            IRoleType.superAdminRole,
+            IRoleType.user
+          ],
+          showInSidebar: true,
+          name: 'categories'
         }
       }
     ],

@@ -7,7 +7,7 @@ import { Observable, catchError, tap, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService extends BaseService<IUser> {
-  protected override source: string = 'users';
+  protected override source: string = 'api/v1/users';
   private userListSignal = signal<IUser[]>([]);
   get users$() {
     return this.userListSignal;

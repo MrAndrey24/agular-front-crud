@@ -6,7 +6,7 @@ import { IUser } from '../interfaces';
   providedIn: 'root'
 })
 export class ProfileService extends BaseService<IUser>{
-  protected override  source: string = 'users/me';
+  protected override  source: string = 'api/v1/users/me';
   private userSignal = signal<IUser>({});
 
   get user$ () {
