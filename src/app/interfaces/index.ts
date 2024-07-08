@@ -44,7 +44,7 @@ export enum IFeedbackStatus {
 }
 
 export enum IRoleType {
-  user = "USER",
+  user = "ROLE_USER",
   superAdminRole = 'ROLE_SUPER_ADMIN_ROLE',
 }
 
@@ -62,4 +62,13 @@ export interface ICategory {
   id?: number;
   name?: string;
   description?: string;
+}
+
+export interface IProduct {
+  id?: number;
+  name?: string;
+  description?: string;
+  price?: number;
+  stock?: number;
+  category?: ICategory;
 }
