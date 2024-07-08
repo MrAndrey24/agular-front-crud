@@ -21,7 +21,7 @@ export class ProductsComponent {
     this.service.getAll();
   }
 
-  handleFormAction(product: any) {
+  handleFormAction(product: IProduct) {
     this.service.addProduct(product);
   }
 
