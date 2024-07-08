@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ILoginResponse, IResponse, IUser } from '../interfaces';
+import { IAuthority, ILoginResponse, IResponse, IRoleType, IUser } from '../interfaces';
 import { Observable, firstValueFrom, of, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -94,5 +94,27 @@ export class AuthService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('expiresIn');
     localStorage.removeItem('auth_user');
+  }
+
+  public getUserAuthorities(): IAuthority[] | undefined {
+    return this.getUser()?.authorities;
+  }
+
+  public areActionAvailable(routeAuthorities: string[]): boolean {
+    let allowedUser: boolean = false;
+    let isAdmin: boolean = false;
+    let userAuthorities = this.getUserAuthorities();
+
+    for(const authority of routeAuthorities) {
+      if(userAuthorities?.some(item => item.authority == authority)) {
+        allowedUser = userAuthorities?.some(item => item.authority == authority);
+      }
+      if(allowedUser) break;
+    }
+
+    if (userAuthorities?.some(item => item.authority == IRoleType.superAdminRole)) {
+      isAdmin = true;
+    }          
+    return allowedUser && isAdmin;
   }
 }

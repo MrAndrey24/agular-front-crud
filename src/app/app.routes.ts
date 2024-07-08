@@ -80,18 +80,18 @@ export const routes: Routes = [
           name: 'profile'
         }
       },
-      {
-        path: 'games',
-        component: GamesComponent,
-        data: { 
-          authorities: [
-            IRoleType.superAdminRole,
-            IRoleType.user
-          ],
-          showInSidebar: true,
-          name: 'games'
-        }
-      },
+      // {
+      //   path: 'games',
+      //   component: GamesComponent,
+      //   data: { 
+      //     authorities: [
+      //       IRoleType.superAdminRole,
+      //       IRoleType.user
+      //     ],
+      //     showInSidebar: true,
+      //     name: 'games'
+      //   }
+      // },
       {
         path: 'categories',
         component: CategoriesComponent,
